@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Hidden ad landing page: keep it out of search engines. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Check de Longevidade · OxyClinic Lisboa</title>
+<meta name="description" content="Check de Longevidade com médico em Lisboa: análises, teste de força, composição corporal e plano escrito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+<style>
+/* Layout: one-offer landing page. Hero + sample report, then included, report, steps, plans, booking, FAQ.
+   Brand: mineral white ground, deep teal ink, one oxygen-blue accent. Light only, on purpose. */
+:root{
+  --bg:#F3F7F7; --surface:#FFFFFF; --ink:#0E2226; --muted:#4D6268; --line:#D6E2E4;
+  --deep:#0B4F5C; --accent:#1F8FA3; --accent-soft:#E2F1F4; --ok:#2C7A4B; --ok-soft:#E3F2E8; --warn:#A35A12; --warn-soft:#FBEFDF;
+  --f-head:"Sora","Inter",system-ui,sans-serif; --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:16px; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+body.l-pt .en, body.l-en .pt{display:none!important}
+a{color:var(--deep)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-head);line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(2.2rem,5.4vw,3.6rem);font-weight:700}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:56ch}
+.num{font-variant-numeric:tabular-nums}
+
+.draft{background:var(--warn-soft);color:var(--warn);font-size:.85rem;text-align:center;padding:6px 16px}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:16px;min-height:64px}
+.logo{font-family:var(--f-head);font-weight:700;font-size:1.15rem;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
+.logo i{width:26px;height:26px;border-radius:50%;border:3px solid var(--accent);display:inline-block;position:relative}
+.logo i::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--accent);right:-6px;top:-6px}
+.logo small{font-family:var(--f-body);font-weight:500;color:var(--muted);font-size:.85rem}
+.spacer{flex:1}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;font:inherit;font-size:.82rem;font-weight:600;padding:6px 12px;cursor:pointer;color:var(--muted);min-height:36px}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;border-radius:999px;padding:12px 22px;text-decoration:none;cursor:pointer;border:2px solid var(--deep);background:var(--deep);color:#fff;min-height:48px}
+.btn:hover{background:#083D47;border-color:#083D47}
+.btn.ghost{background:transparent;color:var(--deep)}
+.btn.ghost:hover{background:var(--accent-soft)}
+.btn.small{padding:8px 16px;min-height:40px;font-size:.92rem}
+@media (max-width:560px){.bar .btn.small{display:none}.logo small{display:none}}
+
+section{padding-block:72px}
+section + section{border-top:1px solid var(--line)}
+.sec-h{display:grid;gap:12px;margin-bottom:36px;max-width:720px}
+
+/* hero */
+.hero{padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+@media (max-width:880px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.hero-copy{display:grid;gap:22px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.price{display:inline-flex;align-items:baseline;gap:8px;font-size:.95rem;color:var(--muted)}
+.price b{font-family:var(--f-head);font-size:1.6rem;color:var(--ink)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.88rem;color:var(--muted)}
+.trust span{display:inline-flex;gap:6px;align-items:center}
+.trust svg{width:16px;height:16px;color:var(--ok)}
+
+/* report card (hero visual + report section) */
+.report{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:grid;gap:14px;box-shadow:0 24px 48px -28px rgba(11,79,92,.35)}
+.report-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.report-h b{font-family:var(--f-head)}
+.tag{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--warn-soft);color:var(--warn);white-space:nowrap}
+.mk{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:baseline;padding-top:12px;border-top:1px solid var(--line)}
+.mk .name{font-weight:500}
+.mk .val{font-family:var(--f-head);font-variant-numeric:tabular-nums}
+.mk .val small{font-family:var(--f-body);color:var(--muted);font-weight:400;font-size:.78rem;margin-left:4px}
+.track{grid-column:1 / -1;height:8px;border-radius:4px;background:var(--accent-soft);position:relative}
+.track i{position:absolute;inset:0 auto 0 0;border-radius:4px;background:var(--accent)}
+.track b{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
+.mk .goal{grid-column:1 / -1;font-size:.8rem;color:var(--muted)}
+
+/* grids */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid3,.grid2{grid-template-columns:minmax(0,1fr)}}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:10px;align-content:start}
+.item svg{width:30px;height:30px;color:var(--accent)}
+.item p{color:var(--muted);font-size:.97rem}
+
+.report-wide{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+@media (max-width:880px){.report-wide{grid-template-columns:minmax(0,1fr)}}
+.report-wide ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--muted)}
+.mk-table{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+@media (max-width:600px){.mk-table{grid-template-columns:minmax(0,1fr)}}
+
+.layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.layers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.layers{grid-template-columns:minmax(0,1fr)}}
+.layer{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:8px;align-content:start;position:relative}
+.layer .dot{width:12px;height:12px;border-radius:3px;background:var(--c)}
+.layer .k{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.layer p{color:var(--muted);font-size:.95rem}
+.layer.now{border-color:var(--deep);box-shadow:inset 0 0 0 1px var(--deep)}
+.layer .badge{justify-self:start;font-size:.72rem;font-weight:600;border-radius:999px;padding:2px 9px;background:var(--ok-soft);color:var(--ok)}
+.layer .badge.later{background:var(--accent-soft);color:var(--deep)}
+.proof{margin-top:20px;display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;color:var(--muted);font-size:.97rem}
+.proof svg{width:22px;height:22px;color:var(--ok);flex:none;margin-top:2px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:minmax(0,1fr)}}
+.steps li{display:grid;gap:8px;align-content:start;padding-top:16px;border-top:3px solid var(--ink)}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--f-head);font-weight:700;font-size:1.6rem;color:var(--accent)}
+.steps p{color:var(--muted);font-size:.97rem}
+
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+@media (max-width:880px){.plans{grid-template-columns:minmax(0,1fr)}}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;display:grid;gap:14px;align-content:start}
+.plan.main{border:2px solid var(--deep)}
+.plan .amount{font-family:var(--f-head);font-size:2.2rem;font-weight:700}
+.plan .amount small{font-family:var(--f-body);font-size:.95rem;font-weight:500;color:var(--muted)}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.plan li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;font-size:.96rem}
+.plan li svg{width:18px;height:18px;color:var(--ok);margin-top:3px}
+.plan .label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.fine{font-size:.85rem;color:var(--muted);margin-top:16px}
+
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:600px){.team{grid-template-columns:minmax(0,1fr)}}
+.doc{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.photo{width:96px;height:96px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:.75rem;text-align:center}
+.doc p{color:var(--muted);font-size:.95rem}
+
+/* booking */
+#marcar{background:var(--deep);color:#fff;border-top:0}
+#marcar .sec-h p{color:#C8E3E8}
+#marcar .eyebrow{color:#8FD3E0}
+.book{background:var(--surface);color:var(--ink);border-radius:22px;padding:26px;display:grid;gap:22px}
+.demo-note{display:flex;gap:10px;align-items:flex-start;background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:.88rem}
+.bstep{display:grid;gap:12px}
+.bstep h3{font-size:1.05rem;display:flex;gap:10px;align-items:center}
+.bstep h3 span{width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:.85rem;display:inline-flex;align-items:center;justify-content:center}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choice{font:inherit;font-size:.92rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:10px 14px;cursor:pointer;min-height:44px;text-align:left}
+.choice[aria-pressed="true"]{border-color:var(--deep);background:var(--deep);color:#fff}
+.choice:disabled{opacity:.4;cursor:not-allowed}
+.choice small{display:block;font-size:.78rem;opacity:.8}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:600px){.form{grid-template-columns:minmax(0,1fr)}}
+.field{display:grid;gap:4px}
+.field label{font-size:.85rem;color:var(--muted)}
+.field input{font:inherit;border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:46px;background:#fff;color:var(--ink);width:100%}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--deep);flex:none}
+.summary{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid var(--line);padding-top:18px}
+.summary b{font-family:var(--f-head);font-size:1.3rem}
+.done{display:grid;gap:10px;text-align:center;padding:24px 8px}
+.done svg{width:52px;height:52px;color:var(--ok);margin:0 auto}
+.alt{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:18px;color:#C8E3E8;font-size:.95rem}
+.alt a{color:#fff}
+
+/* faq */
+.faq{display:grid;gap:10px;max-width:820px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.faq summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-family:var(--f-head)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 18px 16px;color:var(--muted)}
+
+footer{background:var(--ink);color:#B9C9CC;font-size:.9rem;padding-block:40px}
+footer .wrap{display:grid;gap:14px}
+footer a{color:#fff}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
+
+/* sticky mobile CTA */
+.mcta{display:none}
+@media (max-width:700px){
+  .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:15;gap:10px;background:var(--surface);border-top:1px solid var(--line);
+    padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .mcta .btn{flex:1}
+  body{padding-bottom:76px}
+}
+
+/* consent */
+.consent{position:fixed;z-index:30;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  max-width:560px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px;box-shadow:0 18px 40px -20px rgba(0,0,0,.4)}
+.consent p{font-size:.9rem;color:var(--muted)}
+.consent .row{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+</style>
+</head>
+<body class="l-pt">
+
+<div class="draft"><span class="pt">Rascunho para revisão: preços, textos e médicos a confirmar. A marcação nesta página é uma demonstração.</span><span class="en">Draft for review: prices, copy and doctors to be confirmed. Booking on this page is a demo.</span></div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top"><i aria-hidden="true"></i>OxyClinic <small><span class="pt">Longevidade</span><span class="en">Longevity</span></small></a>
+    <span class="spacer"></span>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true" lang="pt-PT">PT-PT</button>
+      <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+    </div>
+    <a class="btn small" href="#marcar"><span class="pt">Marcar Check</span><span class="en">Book a Check</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">OxyClinic · Lisboa · Avenidas Novas</span>
+      <h1><span class="pt">Saiba onde está a sua saúde. Depois, melhore-a com números.</span><span class="en">Know where your health stands. Then improve it, with numbers.</span></h1>
+      <p class="lead"><span class="pt">O Check de Longevidade é uma consulta médica de 90 minutos: análises ao sangue alargadas, teste de força, composição corporal e um plano escrito para os próximos 3 meses.</span><span class="en">The Longevity Check is a 90-minute doctor visit: an extended blood panel, a strength test, body composition and a written plan for the next 3 months.</span></p>
+      <div class="cta">
+        <a class="btn" href="#marcar" data-track="cta_hero"><span class="pt">Marcar o meu Check</span><span class="en">Book my Check</span></a>
+        <a class="btn ghost" href="https://wa.me/351914168804" target="_blank" rel="noopener" data-track="whatsapp"><span class="pt">Perguntar por WhatsApp</span><span class="en">Ask on WhatsApp</span></a>
+      </div>
+      <div class="price"><b class="num">290 €</b><span class="pt">pago na marcação · preço a confirmar</span><span class="en">paid when you book · price to be confirmed</span></div>
+      <div class="trust">
+        <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span class="pt">Liderado por médicos</span><span class="en">Led by doctors</span></span>
+        <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span class="pt">Português e inglês</span><span class="en">Portuguese and English</span></span>
+        <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span class="pt">Remarcação grátis até 48 h antes</span><span class="en">Free rescheduling up to 48 h before</span></span>
+      </div>
+    </div>
+
+    <div class="report" aria-label="Exemplo de relatório">
+      <div class="report-h"><b><span class="pt">O seu relatório</span><span class="en">Your report</span></b><span class="tag"><span class="pt">Exemplo</span><span class="en">Example</span></span></div>
+      <div class="mk"><span class="name">VO2 max</span><span class="val">38<small>mL/kg/min</small></span><span class="track"><i style="width:55%"></i><b style="left:70%"></b></span><span class="goal"><span class="pt">Objetivo: 45+ para a idade</span><span class="en">Goal: 45+ for age</span></span></div>
+      <div class="mk"><span class="name"><span class="pt">Força (Technogym)</span><span class="en">Strength (Technogym)</span></span><span class="val">72<small>/100</small></span><span class="track"><i style="width:72%"></i><b style="left:80%"></b></span><span class="goal"><span class="pt">Objetivo: 80</span><span class="en">Goal: 80</span></span></div>
+      <div class="mk"><span class="name">ApoB</span><span class="val">96<small>mg/dL</small></span><span class="track"><i style="width:64%"></i><b style="left:53%"></b></span><span class="goal"><span class="pt">Objetivo: abaixo de 80</span><span class="en">Goal: below 80</span></span></div>
+      <div class="mk"><span class="name">HbA1c</span><span class="val">5,6<small>%</small></span><span class="track"><i style="width:62%"></i><b style="left:58%"></b></span><span class="goal"><span class="pt">Objetivo: abaixo de 5,4</span><span class="en">Goal: below 5.4</span></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="inclui">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">O que inclui</span><span class="en">What's included</span></span>
+      <h2><span class="pt">Um retrato completo, numa visita</span><span class="en">A full picture, in one visit</span></h2>
+    </div>
+    <div class="grid3">
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21c1-4 3.8-6 7-6s6 2 7 6"/></svg><h3><span class="pt">Consulta médica</span><span class="en">Doctor visit</span></h3><p><span class="pt">45 a 60 minutos sobre a sua história, sono, energia, treino e objetivos.</span><span class="en">45 to 60 minutes on your history, sleep, energy, training and goals.</span></p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7 15h10"/></svg><h3><span class="pt">Análises alargadas</span><span class="en">Extended blood panel</span></h3><p><span class="pt">ApoB, HbA1c, insulina, vitamina D, ferritina, tiroide e mais. Colheita na clínica.</span><span class="en">ApoB, HbA1c, insulin, vitamin D, ferritin, thyroid and more. Taken at the clinic.</span></p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h3M18 12h3"/><rect x="6" y="8" width="3" height="8" rx="1"/><rect x="15" y="8" width="3" height="8" rx="1"/><path d="M9 12h6"/></svg><h3><span class="pt">Força e coordenação</span><span class="en">Strength and coordination</span></h3><p><span class="pt">Teste no equipamento de diagnóstico Technogym. Um número que pode melhorar.</span><span class="en">Tested on the Technogym diagnostic unit. A number you can improve.</span></p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 7h10M6 21h12"/><path d="M4 13l3-6 3 6a3 3 0 0 1-6 0zM14 13l3-6 3 6a3 3 0 0 1-6 0z"/></svg><h3><span class="pt">Composição corporal</span><span class="en">Body composition</span></h3><p><span class="pt">Massa muscular, gordura, perímetro abdominal, tensão arterial e força de preensão.</span><span class="en">Muscle mass, fat, waist, blood pressure and grip strength.</span></p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/></svg><h3><span class="pt">Plano escrito</span><span class="en">Written plan</span></h3><p><span class="pt">O que fazer nos próximos 90 dias: treino, alimentação, sono e, se fizer sentido, sessões na clínica.</span><span class="en">What to do in the next 90 days: training, food, sleep and, where it fits, sessions at the clinic.</span></p></div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg><h3><span class="pt">Relatório de marcadores</span><span class="en">Marker report</span></h3><p><span class="pt">Os seus números e o objetivo para cada um. Repete-se a cada 3 meses.</span><span class="en">Your numbers and a goal for each. Repeated every 3 months.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="relatorio">
+  <div class="wrap report-wide">
+    <div class="sec-h" style="margin-bottom:0">
+      <span class="eyebrow"><span class="pt">Medir, agir, medir outra vez</span><span class="en">Measure, act, measure again</span></span>
+      <h2><span class="pt">Os seus números, a cada 3 meses</span><span class="en">Your numbers, every 3 months</span></h2>
+      <p class="lead"><span class="pt">Cada membro tem objetivos para 8 marcadores. Na reavaliação vemos o que melhorou e ajustamos o plano.</span><span class="en">Every member has goals for 8 markers. At each recheck we see what improved and adjust the plan.</span></p>
+      <ul>
+        <li><span class="pt">No objetivo: continuar.</span><span class="en">On target: continue.</span></li>
+        <li><span class="pt">Fora do objetivo: ajustar.</span><span class="en">Off target: adjust.</span></li>
+      </ul>
+    </div>
+    <div class="report">
+      <div class="report-h"><b><span class="pt">8 marcadores</span><span class="en">8 markers</span></b><span class="tag"><span class="pt">Valores de exemplo</span><span class="en">Example values</span></span></div>
+      <div class="mk-table">
+        <div class="mk"><span class="name">VO2 max</span><span class="val">38<small>mL/kg/min</small></span><span class="track"><i style="width:55%"></i><b style="left:70%"></b></span></div>
+        <div class="mk"><span class="name"><span class="pt">Força</span><span class="en">Strength</span></span><span class="val">72<small>/100</small></span><span class="track"><i style="width:72%"></i><b style="left:80%"></b></span></div>
+        <div class="mk"><span class="name"><span class="pt">RQ em repouso</span><span class="en">Resting RQ</span></span><span class="val">0,88</span><span class="track"><i style="width:66%"></i><b style="left:60%"></b></span></div>
+        <div class="mk"><span class="name"><span class="pt">Lactato em Zona 2</span><span class="en">Zone 2 lactate</span></span><span class="val">2,3<small>mmol/L</small></span><span class="track"><i style="width:60%"></i><b style="left:52%"></b></span></div>
+        <div class="mk"><span class="name"><span class="pt">Massa muscular</span><span class="en">Muscle mass</span></span><span class="val">31<small>kg</small></span><span class="track"><i style="width:68%"></i><b style="left:75%"></b></span></div>
+        <div class="mk"><span class="name">ApoB</span><span class="val">96<small>mg/dL</small></span><span class="track"><i style="width:64%"></i><b style="left:53%"></b></span></div>
+        <div class="mk"><span class="name"><span class="pt">HbA1c e insulina</span><span class="en">HbA1c and insulin</span></span><span class="val">5,6<small>%</small></span><span class="track"><i style="width:62%"></i><b style="left:58%"></b></span></div>
+        <div class="mk"><span class="name"><span class="pt">Glicose (CGM, 14 dias)</span><span class="en">Glucose (CGM, 14 days)</span></span><span class="val">22<small>% CV</small></span><span class="track"><i style="width:58%"></i><b style="left:50%"></b></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">O método</span><span class="en">The method</span></span>
+      <h2><span class="pt">Primeiro a base. Depois os últimos por cento.</span><span class="en">Foundation first. Then the final few percent.</span></h2>
+      <p class="lead"><span class="pt">O programa segue um método em quatro camadas. Começamos onde o seu corpo mais precisa e só avançamos quando a base está sólida.</span><span class="en">The program follows a four-layer method. We start where your body needs it most, and move on only when the base is solid.</span></p>
+    </div>
+    <div class="layers">
+      <div class="layer" style="--c:#EB6834"><span class="dot" aria-hidden="true"></span><span class="k"><span class="pt">Camada 1</span><span class="en">Layer 1</span></span><h3><span class="pt">Base</span><span class="en">Foundation</span></h3><p><span class="pt">Sono, intestino, inflamação e recuperação. Baixar a carga primeiro.</span><span class="en">Sleep, gut, inflammation and recovery. Lower the load first.</span></p></div>
+      <div class="layer now" style="--c:#2A78D6"><span class="dot" aria-hidden="true"></span><span class="k"><span class="pt">Camada 2</span><span class="en">Layer 2</span></span><h3><span class="pt">Função</span><span class="en">Function</span></h3><p><span class="pt">Treino, alimentação, hormonas e stress. O motor do dia a dia.</span><span class="en">Training, food, hormones and stress. Your everyday engine.</span></p><span class="badge"><span class="pt">Foco do Check</span><span class="en">Focus of the Check</span></span></div>
+      <div class="layer" style="--c:#1BAF7A"><span class="dot" aria-hidden="true"></span><span class="k"><span class="pt">Camada 3</span><span class="en">Layer 3</span></span><h3><span class="pt">Otimizar</span><span class="en">Optimize</span></h3><p><span class="pt">Mitocôndrias, cérebro e reparação: câmara hiperbárica, infravermelhos, laser.</span><span class="en">Mitochondria, brain and repair: hyperbaric chamber, infrared, laser.</span></p><span class="badge"><span class="pt">Na subscrição</span><span class="en">In the membership</span></span></div>
+      <div class="layer" style="--c:#4A3AA7"><span class="dot" aria-hidden="true"></span><span class="k"><span class="pt">Camada 4</span><span class="en">Layer 4</span></span><h3><span class="pt">Fronteira</span><span class="en">Frontier</span></h3><p><span class="pt">Os últimos por cento. Só sobre uma base sólida e com indicação médica.</span><span class="en">The final few percent. Only on a solid base, and only on a doctor's advice.</span></p><span class="badge later"><span class="pt">Mais tarde</span><span class="en">Later</span></span></div>
+    </div>
+    <div class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span><span class="pt">Começamos pelo que tem mais evidência científica: capacidade cardiorrespiratória (VO2 max), força muscular e saúde metabólica. Medimos tudo antes e depois.</span><span class="en">We start with what has the strongest scientific evidence: cardiorespiratory fitness (VO2 max), muscle strength and metabolic health. We measure everything before and after.</span></span></div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">Como funciona</span><span class="en">How it works</span></span>
+      <h2><span class="pt">Quatro passos, sem complicações</span><span class="en">Four steps, no hassle</span></h2>
+    </div>
+    <ol class="steps">
+      <li><h3><span class="pt">Marque e pague online</span><span class="en">Book and pay online</span></h3><p><span class="pt">Escolha o dia e a hora. Recebe confirmação e lembrete por SMS.</span><span class="en">Pick a day and time. You get a confirmation and an SMS reminder.</span></p></li>
+      <li><h3><span class="pt">O seu Check</span><span class="en">Your Check</span></h3><p><span class="pt">90 minutos na clínica, em jejum de 10 a 12 horas.</span><span class="en">90 minutes at the clinic, after a 10 to 12 hour fast.</span></p></li>
+      <li><h3><span class="pt">Plano e relatório</span><span class="en">Plan and report</span></h3><p><span class="pt">Quando chegam as análises, o médico revê consigo o plano e os objetivos.</span><span class="en">When the results arrive, the doctor goes through your plan and goals with you.</span></p></li>
+      <li><h3><span class="pt">Reavaliação</span><span class="en">Recheck</span></h3><p><span class="pt">A cada 3 meses, para ver o progresso. Opcional, com subscrição.</span><span class="en">Every 3 months, to see your progress. Optional, with a membership.</span></p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="precos">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">Preços</span><span class="en">Prices</span></span>
+      <h2><span class="pt">Comece com o Check. Continue se quiser.</span><span class="en">Start with the Check. Continue if you like.</span></h2>
+    </div>
+    <div class="plans">
+      <div class="plan main">
+        <span class="label"><span class="pt">O primeiro passo</span><span class="en">The first step</span></span>
+        <h3><span class="pt">Check de Longevidade</span><span class="en">Longevity Check</span></h3>
+        <span class="amount num">290 € <small><span class="pt">uma vez</span><span class="en">once</span></small></span>
+        <ul>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Consulta médica de 45–60 min</span><span class="en">45–60 min doctor visit</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Análises alargadas</span><span class="en">Extended blood panel</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Teste de força Technogym</span><span class="en">Technogym strength test</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Plano escrito a 90 dias</span><span class="en">Written 90-day plan</span></span></li>
+        </ul>
+        <a class="btn" href="#marcar" data-track="cta_plan_check"><span class="pt">Marcar</span><span class="en">Book</span></a>
+      </div>
+      <div class="plan">
+        <span class="label"><span class="pt">Subscrição</span><span class="en">Membership</span></span>
+        <h3>Base</h3>
+        <span class="amount num">149 € <small><span class="pt">/ mês</span><span class="en">/ month</span></small></span>
+        <ul>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">4 sessões por mês: câmara hiperbárica ou infravermelhos</span><span class="en">4 sessions a month: hyperbaric chamber or infrared</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Revisão médica a cada 3 meses</span><span class="en">Doctor review every 3 months</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Sessões marcadas online</span><span class="en">Sessions booked online</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Mínimo 3 meses</span><span class="en">3-month minimum</span></span></li>
+        </ul>
+      </div>
+      <div class="plan">
+        <span class="label"><span class="pt">Subscrição</span><span class="en">Membership</span></span>
+        <h3>Plus</h3>
+        <span class="amount num">249 € <small><span class="pt">/ mês</span><span class="en">/ month</span></small></span>
+        <ul>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">8 sessões por mês: hiperbárica, infravermelhos, laser, treino de força</span><span class="en">8 sessions a month: hyperbaric, infrared, laser, strength training</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Análises 2 vezes por ano</span><span class="en">Blood panel twice a year</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Revisão médica a cada 3 meses</span><span class="en">Doctor review every 3 months</span></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><span class="pt">Mínimo 3 meses</span><span class="en">3-month minimum</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine"><span class="pt">A subscrição é proposta depois do Check, se fizer sentido para si. Preços a confirmar.</span><span class="en">The membership is offered after the Check, if it suits you. Prices to be confirmed.</span></p>
+  </div>
+</section>
+
+<section id="equipa">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">A equipa</span><span class="en">The team</span></span>
+      <h2><span class="pt">Médicos que acompanham os seus números</span><span class="en">Doctors who follow your numbers</span></h2>
+    </div>
+    <div class="team">
+      <div class="doc"><div class="photo"><span class="pt">[foto]</span><span class="en">[photo]</span></div><div><h3>[<span class="pt">Nome do médico</span><span class="en">Doctor's name</span>]</h3><p><span class="pt">[Especialidade] · Check de Longevidade e reavaliações</span><span class="en">[Specialty] · Longevity Check and rechecks</span></p></div></div>
+      <div class="doc"><div class="photo"><span class="pt">[foto]</span><span class="en">[photo]</span></div><div><h3>[<span class="pt">Nome do médico</span><span class="en">Doctor's name</span>]</h3><p><span class="pt">[Especialidade] · Check de Longevidade e reavaliações</span><span class="en">[Specialty] · Longevity Check and rechecks</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="marcar">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">Marcação</span><span class="en">Booking</span></span>
+      <h2><span class="pt">Marque o seu Check</span><span class="en">Book your Check</span></h2>
+      <p><span class="pt">Escolha o dia e a hora. Paga na marcação. Pode remarcar sem custo até 48 horas antes.</span><span class="en">Pick a day and time. You pay when you book. Reschedule for free up to 48 hours before.</span></p>
+    </div>
+
+    <!--
+      ZAPPY GOES HERE.
+      Replace #booking-demo with the Zappy booking button or embedded form for the service "Check de Longevidade"
+      (online prepayment on, SMS/email reminder on). Set Zappy's success redirect to /obrigado/ on this subdomain.
+      The /obrigado/ page fires the conversion ("booking_paid") for Meta (pixel + Conversions API) and Google Ads,
+      only after cookie consent. Never send health details to ad platforms: event names stay generic.
+    -->
+    <div class="book" id="booking-demo">
+      <div class="demo-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><span class="pt">Demonstração: na versão final, esta caixa é a marcação e pagamento do Zappy.</span><span class="en">Demo: in the live version, this box is Zappy's booking and payment.</span></span></div>
+
+      <div id="b-form">
+        <div class="bstep">
+          <h3><span>1</span><span class="pt">Escolha o dia</span><span class="en">Choose a day</span></h3>
+          <div class="choices" id="days" role="group" aria-label="Dia / Day"></div>
+        </div>
+        <div class="bstep" style="margin-top:20px">
+          <h3><span>2</span><span class="pt">Escolha a hora</span><span class="en">Choose a time</span></h3>
+          <div class="choices" id="times" role="group" aria-label="Hora / Time"></div>
+        </div>
+        <form class="bstep" id="details" style="margin-top:20px" novalidate>
+          <h3><span>3</span><span class="pt">Os seus dados</span><span class="en">Your details</span></h3>
+          <div class="form">
+            <div class="field"><label for="b-name"><span class="pt">Nome</span><span class="en">Name</span></label><input id="b-name" autocomplete="name" required></div>
+            <div class="field"><label for="b-phone"><span class="pt">Telemóvel</span><span class="en">Mobile</span></label><input id="b-phone" type="tel" autocomplete="tel" required></div>
+            <div class="field" style="grid-column:1 / -1"><label for="b-email">Email</label><input id="b-email" type="email" autocomplete="email" required></div>
+          </div>
+          <label class="check"><input type="checkbox" id="b-terms" required><span><span class="pt">Aceito os termos de marcação e a política de privacidade.</span><span class="en">I accept the booking terms and the privacy policy.</span></span></label>
+          <div class="summary">
+            <div><span id="b-when" class="num" style="color:var(--muted)"></span><br><b class="num">290 €</b></div>
+            <button class="btn" type="submit" id="b-pay"><span class="pt">Pagar e confirmar</span><span class="en">Pay and confirm</span></button>
+          </div>
+          <p id="b-err" class="check" style="color:#B0352A" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="done" id="b-done" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6"/></svg>
+        <h3><span class="pt">Exemplo de confirmação</span><span class="en">Example confirmation</span></h3>
+        <p id="b-done-t" style="color:var(--muted)"></p>
+        <p style="color:var(--muted);font-size:.9rem"><span class="pt">Na versão final, aqui o Zappy cobra o pagamento e envia a confirmação.</span><span class="en">In the live version, Zappy takes the payment here and sends the confirmation.</span></p>
+        <button class="btn ghost small" type="button" id="b-again" style="justify-self:center"><span class="pt">Voltar</span><span class="en">Back</span></button>
+      </div>
+    </div>
+
+    <div class="alt">
+      <span class="pt">Prefere falar primeiro?</span><span class="en">Rather talk first?</span>
+      <a href="https://wa.me/351914168804" target="_blank" rel="noopener" data-track="whatsapp">WhatsApp 914 168 804</a>
+      <span><span class="pt">Telefone</span><span class="en">Phone</span> <span class="num">211 604 509</span></span>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">Perguntas frequentes</span><span class="en">Questions</span></span>
+      <h2><span class="pt">Antes de marcar</span><span class="en">Before you book</span></h2>
+    </div>
+    <div class="faq">
+      <details><summary><span class="pt">Quanto tempo demora?</span><span class="en">How long does it take?</span></summary><p><span class="pt">Cerca de 90 minutos na clínica. Os resultados das análises chegam em poucos dias e o médico revê o plano consigo.</span><span class="en">About 90 minutes at the clinic. Blood results arrive within a few days, and the doctor goes through the plan with you.</span></p></details>
+      <details><summary><span class="pt">Preciso de ir em jejum?</span><span class="en">Do I need to fast?</span></summary><p><span class="pt">Sim, 10 a 12 horas para as análises. Pode beber água.</span><span class="en">Yes, 10 to 12 hours for the blood test. Water is fine.</span></p></details>
+      <details><summary><span class="pt">O que devo levar?</span><span class="en">What should I bring?</span></summary><p><span class="pt">Roupa confortável para o teste de força, a lista dos medicamentos e suplementos que toma e análises recentes, se tiver.</span><span class="en">Comfortable clothes for the strength test, a list of your medicines and supplements, and recent test results if you have them.</span></p></details>
+      <details><summary><span class="pt">Posso remarcar ou cancelar?</span><span class="en">Can I reschedule or cancel?</span></summary><p><span class="pt">Sim, sem custo até 48 horas antes. [Política de devolução a confirmar.]</span><span class="en">Yes, free of charge up to 48 hours before. [Refund policy to be confirmed.]</span></p></details>
+      <details><summary><span class="pt">Recebo fatura com NIF?</span><span class="en">Do I get an invoice with my tax number?</span></summary><p><span class="pt">Sim. Indique o NIF na marcação ou na receção.</span><span class="en">Yes. Give your tax number (NIF) when you book or at reception.</span></p></details>
+      <details><summary><span class="pt">As consultas são em inglês?</span><span class="en">Are visits in English?</span></summary><p><span class="pt">Sim, em português ou inglês.</span><span class="en">Yes, in Portuguese or English.</span></p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong style="color:#fff">OxyClinic – Saúde Regenerativa, Oncológica e Hiperbárica, Lda.</strong>
+    <div class="row">
+      <span>Avenida Visconde Valmor, 1 B, Lisboa</span>
+      <span><span class="pt">Telefone</span><span class="en">Phone</span> 211 604 509</span>
+      <span>WhatsApp 914 168 804</span>
+      <span>geral@oxyclinic.pt</span>
+    </div>
+    <div class="row">
+      <span>ERS E181740</span>
+      <span><span class="pt">Licença</span><span class="en">Licence</span> 26952/2026</span>
+      <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener"><span class="pt">Livro de Reclamações</span><span class="en">Complaints Book</span></a>
+      <a href="https://oxyclinic.pt" target="_blank" rel="noopener"><span class="pt">Política de privacidade</span><span class="en">Privacy policy</span></a>
+      <button type="button" id="cookie-settings" style="background:none;border:0;color:#fff;text-decoration:underline;font:inherit;cursor:pointer;padding:0"><span class="pt">Cookies</span><span class="en">Cookies</span></button>
+    </div>
+    <p style="font-size:.82rem"><span class="pt">A informação desta página não substitui uma consulta médica. Os resultados variam de pessoa para pessoa.</span><span class="en">The information on this page does not replace a medical consultation. Results vary from person to person.</span></p>
+  </div>
+</footer>
+
+<div class="mcta"><a class="btn" href="#marcar" data-track="cta_sticky"><span class="pt">Marcar Check · 290 €</span><span class="en">Book a Check · €290</span></a></div>
+
+<div class="consent" id="consent" role="dialog" aria-labelledby="consent-t" hidden>
+  <strong id="consent-t"><span class="pt">Cookies</span><span class="en">Cookies</span></strong>
+  <p><span class="pt">Usamos cookies de medição para saber que anúncios trazem marcações. Nunca partilhamos dados de saúde.</span><span class="en">We use measurement cookies to learn which ads bring bookings. We never share health data.</span></p>
+  <div class="row">
+    <button class="btn ghost small" type="button" id="c-no"><span class="pt">Só essenciais</span><span class="en">Essential only</span></button>
+    <button class="btn small" type="button" id="c-yes"><span class="pt">Aceitar</span><span class="en">Accept</span></button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  const $=id=>document.getElementById(id);
+
+  /* ---------- language ---------- */
+  const q=(new URLSearchParams(location.search).get("lang")||"").toLowerCase().slice(0,2);
+  let lang=(q==="en"||q==="pt")?q:(ls.get("oxy-lp-lang")||((navigator.language||"").toLowerCase().startsWith("pt")?"pt":"en"));
+  function setLang(l){
+    lang=l; ls.set("oxy-lp-lang",l);
+    document.body.classList.toggle("l-pt",l==="pt"); document.body.classList.toggle("l-en",l==="en");
+    document.documentElement.lang=l==="pt"?"pt-PT":"en";
+    document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));
+    renderDays(); renderTimes(); updateWhen();
+  }
+  document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+  /* ---------- consent + tracking ----------
+     track() only sends after consent. In the live page, load the Meta pixel and the Google tag inside loadTags().
+     Events are generic (no health data): view_content, begin_booking, booking_submitted, whatsapp_click. */
+  window.dataLayer=window.dataLayer||[];
+  let consent=ls.get("oxy-lp-consent"); // "yes" | "no" | null
+  function loadTags(){ /* Meta pixel + Conversions API and Google tag go here. */ }
+  function track(ev,extra){ if(consent!=="yes") return; window.dataLayer.push(Object.assign({event:ev},extra||{})); }
+  function showConsent(){ $("consent").hidden=false; }
+  $("c-yes").addEventListener("click",()=>{consent="yes";ls.set("oxy-lp-consent","yes");$("consent").hidden=true;loadTags();track("view_content");});
+  $("c-no").addEventListener("click",()=>{consent="no";ls.set("oxy-lp-consent","no");$("consent").hidden=true;});
+  $("cookie-settings").addEventListener("click",showConsent);
+  if(consent===null) showConsent(); else if(consent==="yes"){loadTags();track("view_content");}
+  document.addEventListener("click",e=>{const a=e.target.closest("[data-track]"); if(a) track(a.dataset.track==="whatsapp"?"whatsapp_click":"cta_click",{position:a.dataset.track});});
+
+  /* ---------- booking demo (replace with Zappy) ---------- */
+  const DAYS={pt:["dom","seg","ter","qua","qui","sex","sáb"],en:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]};
+  const MON={pt:["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"],en:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]};
+  const SLOTS=["08:30","09:00","10:00","11:00","14:30","16:00","17:30"];
+  const days=[]; {const d=new Date(); d.setHours(0,0,0,0); while(days.length<10){d.setDate(d.getDate()+1); if(d.getDay()!==0) days.push(new Date(d));}}
+  let pickDay=null, pickTime=null, began=false;
+  // Example availability: some slots shown as taken, so the demo looks real.
+  const taken=(di,si)=>((di*3+si*5)%7===0);
+  const fmtDay=d=>DAYS[lang][d.getDay()]+" "+d.getDate()+" "+MON[lang][d.getMonth()];
+  function renderDays(){
+    $("days").innerHTML=days.map((d,i)=>`<button type="button" class="choice" data-i="${i}" aria-pressed="${pickDay===i}">${fmtDay(d)}</button>`).join("");
+  }
+  function renderTimes(){
+    if(pickDay===null){$("times").innerHTML=`<span style="color:var(--muted);font-size:.92rem">${lang==="pt"?"Escolha primeiro o dia.":"Choose a day first."}</span>`;return;}
+    $("times").innerHTML=SLOTS.map((s,i)=>{const t=taken(pickDay,i);return `<button type="button" class="choice num" data-s="${s}" aria-pressed="${pickTime===s}" ${t?"disabled":""}>${s}${t?`<small>${lang==="pt"?"ocupado":"taken"}</small>`:""}</button>`}).join("");
+  }
+  function updateWhen(){ $("b-when").textContent=(pickDay!==null&&pickTime)?fmtDay(days[pickDay])+" · "+pickTime:(lang==="pt"?"Dia e hora por escolher":"No day and time yet"); }
+  $("days").addEventListener("click",e=>{const b=e.target.closest("button[data-i]"); if(!b) return; pickDay=+b.dataset.i; pickTime=null; if(!began){began=true;track("begin_booking");} renderDays(); renderTimes(); updateWhen();});
+  $("times").addEventListener("click",e=>{const b=e.target.closest("button[data-s]"); if(!b||b.disabled) return; pickTime=b.dataset.s; renderTimes(); updateWhen();});
+  $("details").addEventListener("submit",e=>{
+    e.preventDefault();
+    const err=$("b-err");
+    if(pickDay===null||!pickTime){err.textContent=lang==="pt"?"Escolha o dia e a hora.":"Choose a day and a time.";return;}
+    if(!$("b-name").value.trim()||!$("b-phone").value.trim()||!$("b-email").checkValidity()||!$("b-email").value.trim()){err.textContent=lang==="pt"?"Preencha nome, telemóvel e email.":"Fill in name, mobile and email.";return;}
+    if(!$("b-terms").checked){err.textContent=lang==="pt"?"Aceite os termos para continuar.":"Accept the terms to continue.";return;}
+    err.textContent=""; track("booking_submitted");
+    $("b-done-t").textContent=(lang==="pt"?"Check de Longevidade · ":"Longevity Check · ")+fmtDay(days[pickDay])+" · "+pickTime;
+    $("b-form").hidden=true; $("b-done").hidden=false;
+  });
+  $("b-again").addEventListener("click",()=>{$("b-done").hidden=true;$("b-form").hidden=false;});
+
+  setLang(lang==="en"?"en":"pt");
+})();
+</script>
+</body>
+</html>
