@@ -114,6 +114,16 @@ section + section{border-top:1px solid var(--line)}
 .layer .badge.later{background:var(--accent-soft);color:var(--deep)}
 .proof{margin-top:20px;display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;color:var(--muted);font-size:.97rem}
 .proof svg{width:22px;height:22px;color:var(--ok);flex:none;margin-top:2px}
+.week{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.week{grid-template-columns:minmax(0,1fr)}}
+.day{background:var(--deep);color:#fff;border-radius:var(--r);padding:18px 20px;display:grid;gap:4px}
+.day .dname{font-family:var(--f-head);font-weight:700;font-size:1.25rem}
+.day .slot{font-size:1rem}
+.day small{color:#C8E3E8;font-size:.88rem}
+.week-note{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin:12px 0 32px;color:var(--muted);font-size:.92rem}
+.treat .meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-top:4px}
+.treat .facts{font-size:.9rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.treat .screen{justify-self:start;font-size:.72rem;font-weight:600;border-radius:999px;padding:2px 9px;background:var(--accent-soft);color:var(--deep)}
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:s}
 @media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.steps{grid-template-columns:minmax(0,1fr)}}
@@ -145,9 +155,16 @@ section + section{border-top:1px solid var(--line)}
 #marcar .eyebrow{color:#8FD3E0}
 .book{background:var(--surface);color:var(--ink);border-radius:22px;padding:26px;display:grid;gap:22px}
 .demo-note{display:flex;gap:10px;align-items:flex-start;background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:.88rem}
+.book-steps{display:grid;gap:24px;counter-reset:bs}
 .bstep{display:grid;gap:12px}
 .bstep h3{font-size:1.05rem;display:flex;gap:10px;align-items:center}
-.bstep h3 span{width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:.85rem;display:inline-flex;align-items:center;justify-content:center}
+.bstep h3 .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:.85rem;display:inline-flex;align-items:center;justify-content:center}
+.bstep h3 .n::before{counter-increment:bs;content:counter(bs)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;background:var(--bg);padding:5px;border-radius:14px}
+.tabs button{flex:1 1 200px;font:inherit;font-weight:600;border:0;border-radius:10px;padding:10px 14px;background:transparent;color:var(--muted);cursor:pointer;min-height:46px}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px rgba(14,34,38,.14)}
+.treat-note{font-size:.88rem;color:var(--deep);background:var(--accent-soft);border-radius:10px;padding:8px 12px}
+.treat-note:empty{display:none}
 .choices{display:flex;flex-wrap:wrap;gap:8px}
 .choice{font:inherit;font-size:.92rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:10px 14px;cursor:pointer;min-height:44px;text-align:left}
 .choice[aria-pressed="true"]{border-color:var(--deep);background:var(--deep);color:#fff}
@@ -223,7 +240,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
       <p class="lead"><span class="pt">O Check de Longevidade é uma consulta médica de 90 minutos: análises ao sangue alargadas, teste de força, composição corporal e um plano escrito para os próximos 3 meses.</span><span class="en">The Longevity Check is a 90-minute doctor visit: an extended blood panel, a strength test, body composition and a written plan for the next 3 months.</span></p>
       <div class="cta">
         <a class="btn" href="#marcar" data-track="cta_hero"><span class="pt">Marcar o meu Check</span><span class="en">Book my Check</span></a>
-        <a class="btn ghost" href="https://wa.me/351914168804" target="_blank" rel="noopener" data-track="whatsapp"><span class="pt">Perguntar por WhatsApp</span><span class="en">Ask on WhatsApp</span></a>
+        <a class="btn ghost" href="#rotina" data-track="cta_treatments"><span class="pt">Ver tratamentos</span><span class="en">See treatments</span></a>
       </div>
       <div class="price"><b class="num">290 €</b><span class="pt">pago na marcação · preço a confirmar</span><span class="en">paid when you book · price to be confirmed</span></div>
       <div class="trust">
@@ -301,6 +318,24 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
       <div class="layer" style="--c:#4A3AA7"><span class="dot" aria-hidden="true"></span><span class="k"><span class="pt">Camada 4</span><span class="en">Layer 4</span></span><h3><span class="pt">Fronteira</span><span class="en">Frontier</span></h3><p><span class="pt">Os últimos por cento. Só sobre uma base sólida e com indicação médica.</span><span class="en">The final few percent. Only on a solid base, and only on a doctor's advice.</span></p><span class="badge later"><span class="pt">Mais tarde</span><span class="en">Later</span></span></div>
     </div>
     <div class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span><span class="pt">Começamos pelo que tem mais evidência científica: capacidade cardiorrespiratória (VO2 max), força muscular e saúde metabólica. Medimos tudo antes e depois.</span><span class="en">We start with what has the strongest scientific evidence: cardiorespiratory fitness (VO2 max), muscle strength and metabolic health. We measure everything before and after.</span></span></div>
+  </div>
+</section>
+
+<section id="rotina">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow"><span class="pt">Tratamentos</span><span class="en">Treatments</span></span>
+      <h2><span class="pt">A longevidade cabe na sua rotina</span><span class="en">Longevity that fits your routine</span></h2>
+      <p class="lead"><span class="pt">Sessões curtas, marcadas online, nas Avenidas Novas. Antes do trabalho, à hora de almoço ou depois do treino.</span><span class="en">Short sessions, booked online, in Avenidas Novas. Before work, at lunch or after training.</span></p>
+    </div>
+    <div class="week" aria-label="Exemplo de semana / Example week">
+      <div class="day"><span class="dname"><span class="pt">Segunda</span><span class="en">Monday</span></span><span class="slot num">07:30 · <span class="pt">Força Technogym</span><span class="en">Technogym strength</span></span><small>45 min</small></div>
+      <div class="day"><span class="dname"><span class="pt">Quarta</span><span class="en">Wednesday</span></span><span class="slot num">13:00 · <span class="pt">Câmara hiperbárica</span><span class="en">Hyperbaric chamber</span></span><small>60 min</small></div>
+      <div class="day"><span class="dname"><span class="pt">Sexta</span><span class="en">Friday</span></span><span class="slot num">18:30 · <span class="pt">Infravermelhos</span><span class="en">Infrared</span></span><small>20 min</small></div>
+    </div>
+    <div class="week-note"><span><span class="pt">Exemplo de semana: cerca de 2 horas.</span><span class="en">Example week: about 2 hours.</span></span><span><span class="pt">Marque uma sessão avulso, um pack ou entre na subscrição.</span><span class="en">Book one session, a pack, or join the membership.</span></span></div>
+    <div class="grid3" id="treat-cards"></div>
+    <p class="fine"><span class="pt">Primeira vez? Comece pelo Check: o médico diz-lhe que tratamentos fazem sentido para si.</span><span class="en">First time? Start with the Check: the doctor tells you which treatments make sense for you.</span> <a href="#marcar" data-mode-link="check"><span class="pt">Marcar Check</span><span class="en">Book a Check</span></a></p>
   </div>
 </section>
 
@@ -382,8 +417,8 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
   <div class="wrap">
     <div class="sec-h">
       <span class="eyebrow"><span class="pt">Marcação</span><span class="en">Booking</span></span>
-      <h2><span class="pt">Marque o seu Check</span><span class="en">Book your Check</span></h2>
-      <p><span class="pt">Escolha o dia e a hora. Paga na marcação. Pode remarcar sem custo até 48 horas antes.</span><span class="en">Pick a day and time. You pay when you book. Reschedule for free up to 48 hours before.</span></p>
+      <h2><span class="pt">Marque online</span><span class="en">Book online</span></h2>
+      <p><span class="pt">O Check ou um tratamento avulso. Escolha o dia e a hora e pague na marcação. Pode remarcar sem custo até 48 horas antes.</span><span class="en">The Check or a single treatment. Pick a day and time and pay when you book. Reschedule for free up to 48 hours before.</span></p>
     </div>
 
     <!--
@@ -396,17 +431,28 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
     <div class="book" id="booking-demo">
       <div class="demo-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><span class="pt">Demonstração: na versão final, esta caixa é a marcação e pagamento do Zappy.</span><span class="en">Demo: in the live version, this box is Zappy's booking and payment.</span></span></div>
 
-      <div id="b-form">
+      <div class="tabs" role="tablist" aria-label="Tipo de marcação / Booking type">
+        <button type="button" role="tab" id="tab-check" aria-selected="true" aria-controls="b-form" data-mode="check"><span class="pt">Check de Longevidade</span><span class="en">Longevity Check</span></button>
+        <button type="button" role="tab" id="tab-treat" aria-selected="false" aria-controls="b-form" data-mode="treat"><span class="pt">Tratamentos avulso</span><span class="en">Single treatments</span></button>
+      </div>
+
+      <div id="b-form" class="book-steps" role="tabpanel">
+        <div class="bstep" id="treat-step" hidden>
+          <h3><span class="n" aria-hidden="true"></span><span class="pt">Escolha o tratamento</span><span class="en">Choose a treatment</span></h3>
+          <div class="choices" id="treats" role="group" aria-label="Tratamento / Treatment"></div>
+          <div class="choices" id="packs" role="group" aria-label="Sessões / Sessions"></div>
+          <p class="treat-note" id="treat-note" aria-live="polite"></p>
+        </div>
         <div class="bstep">
-          <h3><span>1</span><span class="pt">Escolha o dia</span><span class="en">Choose a day</span></h3>
+          <h3><span class="n" aria-hidden="true"></span><span class="pt">Escolha o dia</span><span class="en">Choose a day</span></h3>
           <div class="choices" id="days" role="group" aria-label="Dia / Day"></div>
         </div>
-        <div class="bstep" style="margin-top:20px">
-          <h3><span>2</span><span class="pt">Escolha a hora</span><span class="en">Choose a time</span></h3>
+        <div class="bstep">
+          <h3><span class="n" aria-hidden="true"></span><span class="pt">Escolha a hora</span><span class="en">Choose a time</span></h3>
           <div class="choices" id="times" role="group" aria-label="Hora / Time"></div>
         </div>
-        <form class="bstep" id="details" style="margin-top:20px" novalidate>
-          <h3><span>3</span><span class="pt">Os seus dados</span><span class="en">Your details</span></h3>
+        <form class="bstep" id="details" novalidate>
+          <h3><span class="n" aria-hidden="true"></span><span class="pt">Os seus dados</span><span class="en">Your details</span></h3>
           <div class="form">
             <div class="field"><label for="b-name"><span class="pt">Nome</span><span class="en">Name</span></label><input id="b-name" autocomplete="name" required></div>
             <div class="field"><label for="b-phone"><span class="pt">Telemóvel</span><span class="en">Mobile</span></label><input id="b-phone" type="tel" autocomplete="tel" required></div>
@@ -414,7 +460,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
           </div>
           <label class="check"><input type="checkbox" id="b-terms" required><span><span class="pt">Aceito os termos de marcação e a política de privacidade.</span><span class="en">I accept the booking terms and the privacy policy.</span></span></label>
           <div class="summary">
-            <div><span id="b-when" class="num" style="color:var(--muted)"></span><br><b class="num">290 €</b></div>
+            <div><span id="b-what" style="color:var(--ink);font-weight:600"></span><br><span id="b-when" class="num" style="color:var(--muted)"></span><br><b class="num" id="b-price">290 €</b></div>
             <button class="btn" type="submit" id="b-pay"><span class="pt">Pagar e confirmar</span><span class="en">Pay and confirm</span></button>
           </div>
           <p id="b-err" class="check" style="color:#B0352A" aria-live="polite"></p>
@@ -501,7 +547,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
     document.body.classList.toggle("l-pt",l==="pt"); document.body.classList.toggle("l-en",l==="en");
     document.documentElement.lang=l==="pt"?"pt-PT":"en";
     document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));
-    renderDays(); renderTimes(); updateWhen();
+    renderCards(); renderTreats(); renderDays(); renderTimes(); updateWhen();
   }
   document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 
@@ -535,22 +581,92 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px}
     if(pickDay===null){$("times").innerHTML=`<span style="color:var(--muted);font-size:.92rem">${lang==="pt"?"Escolha primeiro o dia.":"Choose a day first."}</span>`;return;}
     $("times").innerHTML=SLOTS.map((s,i)=>{const t=taken(pickDay,i);return `<button type="button" class="choice num" data-s="${s}" aria-pressed="${pickTime===s}" ${t?"disabled":""}>${s}${t?`<small>${lang==="pt"?"ocupado":"taken"}</small>`:""}</button>`}).join("");
   }
-  function updateWhen(){ $("b-when").textContent=(pickDay!==null&&pickTime)?fmtDay(days[pickDay])+" · "+pickTime:(lang==="pt"?"Dia e hora por escolher":"No day and time yet"); }
-  $("days").addEventListener("click",e=>{const b=e.target.closest("button[data-i]"); if(!b) return; pickDay=+b.dataset.i; pickTime=null; if(!began){began=true;track("begin_booking");} renderDays(); renderTimes(); updateWhen();});
+  function updateWhen(){
+    $("b-when").textContent=(pickDay!==null&&pickTime)?fmtDay(days[pickDay])+" · "+pickTime:(lang==="pt"?"Dia e hora por escolher":"No day and time yet");
+    $("b-what").textContent=itemName();
+    const p=price(); $("b-price").textContent=p===null?"—":fmtEur(p);
+  }
+  $("days").addEventListener("click",e=>{const b=e.target.closest("button[data-i]"); if(!b) return; pickDay=+b.dataset.i; pickTime=null; if(!began){began=true;track("begin_booking",{booking_type:mode==="check"?"check":"treatment"});} renderDays(); renderTimes(); updateWhen();});
   $("times").addEventListener("click",e=>{const b=e.target.closest("button[data-s]"); if(!b||b.disabled) return; pickTime=b.dataset.s; renderTimes(); updateWhen();});
   $("details").addEventListener("submit",e=>{
     e.preventDefault();
     const err=$("b-err");
+    if(mode==="treat"&&!treat){err.textContent=lang==="pt"?"Escolha o tratamento.":"Choose a treatment.";return;}
     if(pickDay===null||!pickTime){err.textContent=lang==="pt"?"Escolha o dia e a hora.":"Choose a day and a time.";return;}
     if(!$("b-name").value.trim()||!$("b-phone").value.trim()||!$("b-email").checkValidity()||!$("b-email").value.trim()){err.textContent=lang==="pt"?"Preencha nome, telemóvel e email.":"Fill in name, mobile and email.";return;}
     if(!$("b-terms").checked){err.textContent=lang==="pt"?"Aceite os termos para continuar.":"Accept the terms to continue.";return;}
     err.textContent=""; track("booking_submitted");
-    $("b-done-t").textContent=(lang==="pt"?"Check de Longevidade · ":"Longevity Check · ")+fmtDay(days[pickDay])+" · "+pickTime;
+    $("b-done-t").textContent=itemName()+" · "+fmtDay(days[pickDay])+" · "+pickTime+" · "+fmtEur(price());
     $("b-form").hidden=true; $("b-done").hidden=false;
   });
   $("b-again").addEventListener("click",()=>{$("b-done").hidden=true;$("b-form").hidden=false;});
 
+  /* ---------- treatments (à la carte) ----------
+     One list feeds both the treatment cards and the booking tab. Prices are examples, to be confirmed.
+     screen: the first session needs a short medical screening. Ad deep link: ?t=<id>, e.g. ?t=hbot */
+  const TREATS=[
+    {id:"hbot",min:60,price:80,screen:true,pt:"Câmara hiperbárica",en:"Hyperbaric chamber",
+      dpt:"Oxigénio a pressão aumentada, numa câmara confortável. Pode ler ou descansar.",den:"Oxygen at raised pressure, in a comfortable chamber. Read or rest."},
+    {id:"infrared",min:20,price:25,pt:"Infravermelhos",en:"Infrared",
+      dpt:"Painéis de luz infravermelha. Rápido, cabe antes do trabalho.",den:"Infrared light panels. Quick, fits in before work."},
+    {id:"strength",min:45,price:60,pt:"Treino de força Technogym",en:"Technogym strength session",
+      dpt:"Treino guiado nas máquinas Technogym, com o progresso medido.",den:"Guided training on the Technogym machines, with progress measured."},
+    {id:"laser",min:45,price:90,screen:true,pt:"Laser Weber",en:"Weber laser",
+      dpt:"Laserterapia de baixa intensidade, aplicada pela equipa clínica.",den:"Low-level laser therapy, given by the clinical team."},
+    {id:"iv",min:45,price:120,screen:true,pt:"Soro de vitaminas (IV)",en:"Vitamin IV drip",
+      dpt:"Vitaminas e minerais por via intravenosa, com prescrição médica.",den:"Vitamins and minerals by IV, on a doctor's prescription."},
+    {id:"hyper",min:120,price:450,screen:true,pt:"Hipertermia de corpo inteiro",en:"Whole-body hyperthermia",
+      dpt:"Aquecimento controlado do corpo inteiro, sob vigilância médica.",den:"Controlled whole-body warming, under medical supervision."}
+  ];
+  let mode="check", treat=null, pack=1;
+  const fmtEur=n=>lang==="pt"?n.toLocaleString("pt-PT")+" €":"€"+n.toLocaleString("en-IE");
+  const tName=t=>lang==="pt"?t.pt:t.en;
+  function price(){
+    if(mode==="check") return 290;
+    const t=TREATS.find(x=>x.id===treat); if(!t) return null;
+    return Math.round(t.price*pack*(pack===5?0.9:1));
+  }
+  function itemName(){
+    if(mode==="check") return lang==="pt"?"Check de Longevidade":"Longevity Check";
+    const t=TREATS.find(x=>x.id===treat); if(!t) return lang==="pt"?"Tratamento por escolher":"No treatment yet";
+    return tName(t)+(pack===5?(lang==="pt"?" · pack de 5":" · pack of 5"):"");
+  }
+  function renderCards(){
+    const pt=lang==="pt";
+    $("treat-cards").innerHTML=TREATS.map(t=>`<div class="item treat">
+      <h3>${tName(t)}</h3><p>${pt?t.dpt:t.den}</p>
+      ${t.screen?`<span class="screen">${pt?"1.ª sessão com triagem médica":"First session with medical screening"}</span>`:""}
+      <div class="meta"><span class="facts">${t.min} min · ${pt?"desde":"from"} ${fmtEur(t.price)}</span>
+      <button class="btn ghost small" type="button" data-book="${t.id}">${pt?"Marcar":"Book"}</button></div></div>`).join("");
+  }
+  function renderTreats(){
+    const pt=lang==="pt";
+    $("treats").innerHTML=TREATS.map(t=>`<button type="button" class="choice" data-t="${t.id}" aria-pressed="${treat===t.id}">${tName(t)}<small>${t.min} min · ${fmtEur(t.price)}</small></button>`).join("");
+    $("packs").innerHTML=[1,5].map(p=>`<button type="button" class="choice" data-p="${p}" aria-pressed="${pack===p}">${p===1?(pt?"Sessão única":"Single session"):(pt?"Pack de 5 sessões":"Pack of 5 sessions")}<small>${p===1?(pt?"pague por sessão":"pay per session"):(pt?"10% de desconto":"10% off")}</small></button>`).join("");
+    const t=TREATS.find(x=>x.id===treat);
+    $("treat-note").textContent=t&&t.screen?(pt?"Primeira vez? A sessão começa com uma breve triagem médica.":"First time? The session starts with a short medical screening."):"";
+  }
+  function setMode(m,t){
+    mode=m; if(t!==undefined) treat=t;
+    document.querySelectorAll(".tabs [role=tab]").forEach(b=>b.setAttribute("aria-selected",b.dataset.mode===m?"true":"false"));
+    $("treat-step").hidden=m!=="treat";
+    $("b-done").hidden=true; $("b-form").hidden=false; $("b-err").textContent="";
+    renderTreats(); updateWhen();
+  }
+  document.querySelectorAll(".tabs [role=tab]").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
+  $("treats").addEventListener("click",e=>{const b=e.target.closest("button[data-t]"); if(!b) return; treat=b.dataset.t; renderTreats(); updateWhen();});
+  $("packs").addEventListener("click",e=>{const b=e.target.closest("button[data-p]"); if(!b) return; pack=+b.dataset.p; renderTreats(); updateWhen();});
+  document.addEventListener("click",e=>{
+    const b=e.target.closest("[data-book]");
+    if(b){setMode("treat",b.dataset.book); $("marcar").scrollIntoView({block:"start"}); return;}
+    const c=e.target.closest("[data-mode-link]");
+    if(c) setMode(c.dataset.modeLink);
+  });
+  const tp=new URLSearchParams(location.search).get("t");
+  if(tp&&TREATS.some(x=>x.id===tp)){mode="treat";treat=tp;}
+
   setLang(lang==="en"?"en":"pt");
+  setMode(mode,treat);
 })();
 </script>
 </body>

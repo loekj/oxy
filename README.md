@@ -11,6 +11,23 @@ The ad landing page for the Longevity Check. Portuguese (pt-PT) and English, one
 
 The page picks Portuguese or English from the browser. Force it with `?lang=pt-PT` or `?lang=en`.
 
+## Links for ads
+
+The core offer is the Check plus the membership. Ads for single treatments land in the same page, with the treatment already picked in the booking box.
+
+| Ad for | Link |
+|---|---|
+| Longevity Check (core) | `/?lang=pt-PT#marcar` |
+| Treatments, "fits your routine" | `/?lang=pt-PT#rotina` |
+| Hyperbaric chamber | `/?t=hbot#marcar` |
+| Infrared | `/?t=infrared#marcar` |
+| Technogym strength session | `/?t=strength#marcar` |
+| Weber laser | `/?t=laser#marcar` |
+| Vitamin IV drip | `/?t=iv#marcar` |
+| Whole-body hyperthermia | `/?t=hyper#marcar` |
+
+Add `&lang=en` for English ads. Treatment prices in `index.html` (`TREATS`) are examples until confirmed.
+
 ## Connect the subdomain
 
 1. At the DNS of `oxyclinic.pt`, add a `CNAME` record: `longevity` → `loekj.github.io`.
